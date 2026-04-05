@@ -38,9 +38,9 @@ body {
   }
   
   #charts canvas {
-    max-width: 400px;   /* limit width */
-    max-height: 250px;  /* limit height */
-    width: 100%;        /* responsive scaling */
+    max-width: 400px;   
+    max-height: 250px;  
+    width: 100%;        
     height: auto;
     border: 1px solid #ddd;
     border-radius: 8px;
