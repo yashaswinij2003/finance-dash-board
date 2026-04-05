@@ -1,4 +1,4 @@
-// Finance Dashboard - script.js
+
 
 let transactions = JSON.parse(localStorage.getItem("transactions")) || [
     {date: "2026-04-01", amount: 500, category: "Salary", type: "income"},
@@ -9,12 +9,11 @@ let transactions = JSON.parse(localStorage.getItem("transactions")) || [
   let role = "viewer";
   let sortKey = null;
   
-  // Save state to localStorage
   function saveState() {
     localStorage.setItem("transactions", JSON.stringify(transactions));
   }
   
-  // Render summary cards
+  
   function renderSummary() {
     let income = transactions.filter(t => t.type === "income").reduce((a,b)=>a+b.amount,0);
     let expenses = transactions.filter(t => t.type === "expense").reduce((a,b)=>a+b.amount,0);
@@ -25,7 +24,7 @@ let transactions = JSON.parse(localStorage.getItem("transactions")) || [
     $("#totalBalance").text("Balance: $" + balance);
   }
   
-  // Render transactions table
+  
   function renderTransactions(filter="") {
     $("#transactionList").empty();
     let data = transactions.filter(t => 
@@ -47,7 +46,7 @@ let transactions = JSON.parse(localStorage.getItem("transactions")) || [
     });
   }
   
-  // Render insights
+ 
   function renderInsights() {
     let categories = {};
     transactions.forEach(t => {
@@ -65,7 +64,7 @@ let transactions = JSON.parse(localStorage.getItem("transactions")) || [
     `);
   }
   
-  // Render charts
+  
   function renderCharts() {
     // Reset canvases to avoid duplicate charts
     $("#balanceTrend").replaceWith('<canvas id="balanceTrend"></canvas>');
@@ -105,7 +104,6 @@ let transactions = JSON.parse(localStorage.getItem("transactions")) || [
     });
   }
   
-  // Update role-based UI
   function updateRoleUI() {
     if(role === "admin") {
       $("#addTransactionBtn").show();
@@ -114,7 +112,7 @@ let transactions = JSON.parse(localStorage.getItem("transactions")) || [
     }
   }
   
-  // Document ready
+  
   $(document).ready(function(){
     renderSummary();
     renderTransactions();
@@ -122,18 +120,18 @@ let transactions = JSON.parse(localStorage.getItem("transactions")) || [
     renderCharts();
     updateRoleUI();
   
-    // Search filter
+   
     $("#searchBox").on("input", function(){
       renderTransactions($(this).val());
     });
   
-    // Role switching
+ 
     $("#roleSelector").on("change", function(){
       role = $(this).val();
       updateRoleUI();
     });
   
-    // Add transaction (Admin only)
+   
     $("#addTransactionBtn").on("click", function(){
       let newT = {date:"2026-04-05", amount:200, category:"Shopping", type:"expense"};
       transactions.push(newT);
@@ -144,13 +142,13 @@ let transactions = JSON.parse(localStorage.getItem("transactions")) || [
       renderCharts();
     });
   
-    // Sorting
+   
     $("th").on("click", function(){
       sortKey = $(this).data("sort");
       renderTransactions($("#searchBox").val());
     });
   
-    // Dark mode toggle
+   
     $("#darkModeToggle").on("click", function(){
       $("body").toggleClass("dark-mode");
     });
