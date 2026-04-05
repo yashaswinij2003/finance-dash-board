@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0; padding: 0;
+    background: #f9f9f9; color: #333;
+  }
+  header {
+    background: #2c3e50; color: white;
+    padding: 1rem; display: flex; justify-content: space-between; align-items: center;
+  }
+  .card {
+    background: white; padding: 1rem; margin: 0.5rem;
+    border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    flex: 1; text-align: center;
+  }
+  #summary { display: flex; justify-content: space-around; flex-wrap: wrap; }
+  section { margin: 1rem; }
+  table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+  th, td { border: 1px solid #ddd; padding: 8px; text-align: center; cursor: pointer; }
+  th { background: #eee; }
+  button {
+    margin-top: 1rem; padding: 0.5rem 1rem;
+    background: #2c3e50; color: white; border: none; border-radius: 5px;
+  }
+  button:hover { background: #34495e; cursor: pointer; }
+  .dark-mode {
+    background: #1e1e1e; color: #f0f0f0;
+  }
+  .dark-mode .card { background: #333; color: #f0f0f0; }
+  .dark-mode th { background: #444; }
+  @media (max-width: 768px) {
+    #summary { flex-direction: column; }
+  }
+  #charts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1rem;
+  }
+  
+  #charts canvas {
+    max-width: 400px;   /* limit width */
+    max-height: 250px;  /* limit height */
+    width: 100%;        /* responsive scaling */
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    padding: 0.5rem;
+  }
